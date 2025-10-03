@@ -31,6 +31,8 @@ RUN npm run build
 # Stage 2: Serve the application with Nginx
 FROM nginx:1.28-alpine AS production-stage
 
+RUN apk update && apk upgrade --no-cache
+
 # Remove the default Nginx configuration
 RUN rm -rf /etc/nginx/conf.d
 

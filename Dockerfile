@@ -7,9 +7,13 @@ WORKDIR /app
 # Copy package.json and package-lock.json (or yarn.lock)
 # and install dependencies
 COPY package.json /app/
+
 # Uncomment the line below if you use yarn instead of npm
 # COPY yarn.lock /app/
 RUN npm install
+
+RUN apk update && apk upgrade --no-cache
+
 # If using yarn, use:
 # RUN yarn install
 
@@ -25,7 +29,9 @@ RUN npm run build
 # --------------------------------------------------------------------------------
 
 # Stage 2: Serve the application with Nginx
-FROM nginx:stable-alpine AS production-stage
+FROM nginx:1.28-alpine AS production-stage
+
+RUN apk update && apk upgrade --no-cache
 
 # Remove the default Nginx configuration
 RUN rm -rf /etc/nginx/conf.d

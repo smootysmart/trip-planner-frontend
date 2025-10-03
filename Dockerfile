@@ -7,9 +7,15 @@ WORKDIR /app
 # Copy package.json and package-lock.json (or yarn.lock)
 # and install dependencies
 COPY package.json /app/
+
 # Uncomment the line below if you use yarn instead of npm
 # COPY yarn.lock /app/
 RUN npm install
+
+RUN apt-get update && \
+    apt-get install -y libexpat1=2.7.2 libexpat1-dev=2.7.2 other-deps ... && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
+
 # If using yarn, use:
 # RUN yarn install
 

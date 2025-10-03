@@ -12,9 +12,7 @@ COPY package.json /app/
 # COPY yarn.lock /app/
 RUN npm install
 
-RUN apt-get update && \
-    apt-get install -y libexpat1=2.7.2 libexpat1-dev=2.7.2 \
-    apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN apt update && apt upgrade -y
 
 # If using yarn, use:
 # RUN yarn install

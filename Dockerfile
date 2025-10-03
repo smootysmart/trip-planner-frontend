@@ -13,7 +13,7 @@ COPY package.json /app/
 RUN npm install
 
 RUN apt-get update && \
-    apt-get install -y libexpat1=2.7.2 libexpat1-dev=2.7.2 other-deps ... && \
+    apt-get install -y libexpat1=2.7.2 libexpat1-dev=2.7.2 \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # If using yarn, use:
@@ -31,7 +31,7 @@ RUN npm run build
 # --------------------------------------------------------------------------------
 
 # Stage 2: Serve the application with Nginx
-FROM nginx:stable-alpine AS production-stage
+FROM nginx:1.28-alpine AS production-stage
 
 # Remove the default Nginx configuration
 RUN rm -rf /etc/nginx/conf.d

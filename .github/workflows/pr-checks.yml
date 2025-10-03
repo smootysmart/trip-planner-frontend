@@ -16,4 +16,4 @@ jobs:
     name: Trivy Vulnerability Scan
     # This job depends on the successful completion of the 'run-ci-checks' job
     needs: run-ci-checks
-    uses: LSEG-Immersion-Day-DevOps-workshop-2025/actions/.github/workflows/security-scan-ci.yml@main
+    uses: smootysmart/actions/.github/workflows/security-scan-ci.yml@main

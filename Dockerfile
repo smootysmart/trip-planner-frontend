@@ -12,7 +12,7 @@ COPY package.json /app/
 # COPY yarn.lock /app/
 RUN npm install
 
-RUN apt update && apt upgrade -y
+RUN apk update && apk upgrade --no-cache
 
 # If using yarn, use:
 # RUN yarn install
